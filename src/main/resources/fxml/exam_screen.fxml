@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.exam.controller.ExamController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label fx:id="timerLabel" text="Time Left: 60s" style="-fx-font-size: 16px; -fx-text-fill: red;"/>
+    <Label fx:id="questionLabel" wrapText="true"/>
+
+    <RadioButton fx:id="optionA"/>
+    <RadioButton fx:id="optionB"/>
+    <RadioButton fx:id="optionC"/>
+    <RadioButton fx:id="optionD"/>
+
+    <HBox spacing="10">
+        <Button fx:id="prevButton" text="Previous" onAction="#handlePrevious"/>
+        <Button fx:id="nextButton" text="Next" onAction="#handleNext"/>
+        <Button fx:id="submitButton" text="Submit" onAction="#handleSubmit"/>
+    </HBox>
+
+    <Label fx:id="resultLabel"/>
+    <Button fx:id="returnButton" text="Return to Dashboard"
+            onAction="#handleReturnToDashboard" visible="false"/>
+</VBox>

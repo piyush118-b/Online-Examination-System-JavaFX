@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="20"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.exam.controller.StudentController">
+
+    <Label fx:id="welcomeLabel" text="Student Dashboard"/>
+
+    <Button text="Start Exam" onAction="#handleStartExam"/>
+
+    <Button text="Logout" onAction="#handleLogout"/>
+
+</VBox>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.exam.controller.ManageQuestionController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Add New Question"/>
+
+    <TextArea fx:id="questionText" promptText="Enter Question" prefHeight="80"/>
+
+    <TextField fx:id="optionA" promptText="Option A"/>
+    <TextField fx:id="optionB" promptText="Option B"/>
+    <TextField fx:id="optionC" promptText="Option C"/>
+    <TextField fx:id="optionD" promptText="Option D"/>
+
+    <TextField fx:id="correctOption" promptText="Correct Option (A/B/C/D)"/>
+
+    <TextField fx:id="marks" promptText="Marks"/>
+
+    <Button text="Save Question" onAction="#handleSaveQuestion"/>
+
+    <Label fx:id="messageLabel"/>
+
+    <Button text="Back" onAction="#handleBack"/>
+
+</VBox>
