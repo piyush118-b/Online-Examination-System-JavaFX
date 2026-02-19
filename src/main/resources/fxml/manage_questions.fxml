@@ -1,34 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.exam.controller.ManageQuestionController">
+<ScrollPane fitToWidth="true"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.exam.controller.ManageQuestionController">
 
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+    <content>
+        <VBox spacing="12" alignment="CENTER">
 
-    <Label text="Add New Question"/>
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
 
-    <TextArea fx:id="questionText" promptText="Enter Question" prefHeight="80"/>
+            <Label text="Add New Question"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-    <TextField fx:id="optionA" promptText="Option A"/>
-    <TextField fx:id="optionB" promptText="Option B"/>
-    <TextField fx:id="optionC" promptText="Option C"/>
-    <TextField fx:id="optionD" promptText="Option D"/>
+            <!-- SECTION -->
+            <Label text="Section"/>
+            <ComboBox fx:id="sectionBox" prefWidth="250"/>
 
-    <TextField fx:id="correctOption" promptText="Correct Option (A/B/C/D)"/>
+            <!-- QUESTION -->
+            <Label text="Question"/>
+            <TextArea fx:id="questionText"
+                      promptText="Enter Question"
+                      prefHeight="100"
+                      wrapText="true"/>
 
-    <TextField fx:id="marks" promptText="Marks"/>
+            <!-- IMAGE SECTION -->
+            <Button text="Add Image"
+                    onAction="#handleAddImage"/>
 
-    <Button text="Save Question" onAction="#handleSaveQuestion"/>
+            <VBox fx:id="selectedImagesBox"
+                  spacing="5"
+                  alignment="CENTER_LEFT"/>
 
-    <Label fx:id="messageLabel"/>
+            <!-- OPTIONS -->
+            <Label text="Option A"/>
+            <TextField fx:id="optionA"
+                       promptText="Option A"/>
 
-    <Button text="Back" onAction="#handleBack"/>
+            <Label text="Option B"/>
+            <TextField fx:id="optionB"
+                       promptText="Option B"/>
 
-</VBox>
+            <Label text="Option C"/>
+            <TextField fx:id="optionC"
+                       promptText="Option C"/>
+
+            <Label text="Option D"/>
+            <TextField fx:id="optionD"
+                       promptText="Option D"/>
+
+            <!-- CORRECT OPTION -->
+            <Label text="Correct Option (A/B/C/D)"/>
+            <TextField fx:id="correctOption"
+                       promptText="Enter A, B, C, or D"/>
+
+            <!-- MARKS -->
+            <Label text="Marks"/>
+            <TextField fx:id="marks"
+                       promptText="Enter Marks"/>
+
+            <!-- SAVE BUTTON -->
+            <Button text="Save Question"
+                    prefWidth="200"
+                    onAction="#handleSaveQuestion"/>
+
+            <Label fx:id="messageLabel"
+                   style="-fx-text-fill: red;"/>
+
+            <!-- BACK BUTTON -->
+            <Button text="Back"
+                    prefWidth="150"
+                    onAction="#handleBack"/>
+
+        </VBox>
+    </content>
+
+</ScrollPane>

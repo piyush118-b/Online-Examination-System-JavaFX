@@ -1,0 +1,21 @@
+.btn-not-visited {
+    -fx-background-color: lightgray;
+}
+
+.btn-not-answered {
+    -fx-background-color: orange;
+}
+
+.btn-answered {
+    -fx-background-color: lightgreen;
+}
+
+.btn-review {
+    -fx-background-color: purple;
+    -fx-text-fill: white;
+}
+
+.btn-current {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+}

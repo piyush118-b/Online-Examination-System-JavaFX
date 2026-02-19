@@ -2,32 +2,136 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.*?>
 
-<VBox spacing="15" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.exam.controller.ExamController">
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.exam.controller.ExamController">
 
-    <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
-    </padding>
+    <!-- ================= EXAM CONTAINER ================= -->
+    <HBox fx:id="examContainer" spacing="20">
 
-    <Label fx:id="timerLabel" text="Time Left: 60s" style="-fx-font-size: 16px; -fx-text-fill: red;"/>
-    <Label fx:id="questionLabel" wrapText="true"/>
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <ScrollPane fitToWidth="true" prefWidth="500">
 
-    <RadioButton fx:id="optionA"/>
-    <RadioButton fx:id="optionB"/>
-    <RadioButton fx:id="optionC"/>
-    <RadioButton fx:id="optionD"/>
+        <content>
+        <!-- LEFT SIDE -->
+        <VBox spacing="15" prefWidth="500">
 
-    <HBox spacing="10">
-        <Button fx:id="prevButton" text="Previous" onAction="#handlePrevious"/>
-        <Button fx:id="nextButton" text="Next" onAction="#handleNext"/>
-        <Button fx:id="submitButton" text="Submit" onAction="#handleSubmit"/>
+            <Label fx:id="timerLabel"
+                   text="Time Left: 60s"
+                   style="-fx-font-size: 16px; -fx-text-fill: red;"/>
+
+            <Label fx:id="questionNumberLabel"
+                   style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+            <Label fx:id="questionLabel" wrapText="true"/>
+            <VBox fx:id="imageContainer" spacing="10"/>
+
+            <RadioButton fx:id="optionA"/>
+            <RadioButton fx:id="optionB"/>
+            <RadioButton fx:id="optionC"/>
+            <RadioButton fx:id="optionD"/>
+
+            <HBox spacing="10">
+                <Button fx:id="prevButton"
+                        text="Previous"
+                        onAction="#handlePrevious"/>
+
+                <Button fx:id="nextButton"
+                        text="Next"
+                        onAction="#handleNext"/>
+
+                <Button text="Mark for Review"
+                        onAction="#handleMarkForReview"/>
+            </HBox>
+
+        </VBox>
+        </content>
+
+        </ScrollPane>
+        <!-- RIGHT SIDE NAVIGATOR -->
+        <VBox spacing="15" prefWidth="250">
+
+            <Label text="Legend"
+                   style="-fx-font-weight: bold;"/>
+
+            <VBox spacing="5">
+                <HBox spacing="5">
+                    <Label text="Answered:"/>
+                    <Label fx:id="answeredCount" text="0"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <Label text="Not Answered:"/>
+                    <Label fx:id="notAnsweredCount" text="0"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <Label text="Not Visited:"/>
+                    <Label fx:id="notVisitedCount" text="0"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <Label text="Marked For Review:"/>
+                    <Label fx:id="markedCount" text="0"/>
+                </HBox>
+
+                <HBox spacing="5">
+                    <Label text="Answered + Review:"/>
+                    <Label fx:id="answeredMarkedCount" text="0"/>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <!-- SECTION SWITCH BUTTONS -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button text="APTITUDE"
+                        onAction="#loadAptitudeSection"
+                        prefWidth="100"/>
+                <Button text="CORE"
+                        onAction="#loadCoreSection"
+                        prefWidth="100"/>
+            </HBox>
+
+            <Separator/>
+
+            <Label text="Question Navigator"
+                   style="-fx-font-weight: bold;"/>
+
+
+            <GridPane fx:id="questionGrid"
+                      hgap="10"
+                      vgap="10"/>
+
+            <Button fx:id="submitButton"
+                    text="Submit Exam"
+                    onAction="#handleSubmit"
+                    prefWidth="200"/>
+        </VBox>
+
     </HBox>
 
-    <Label fx:id="resultLabel"/>
-    <Button fx:id="returnButton" text="Return to Dashboard"
-            onAction="#handleReturnToDashboard" visible="false"/>
-</VBox>
+    <!-- ================= RESULT CONTAINER ================= -->
+    <VBox fx:id="resultContainer"
+          alignment="CENTER"
+          spacing="20"
+          visible="false">
+
+        <Label text="Exam Result"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+        <Label fx:id="resultLabel"
+               style="-fx-font-size: 16px;"/>
+
+        <Button text="Return to Dashboard"
+                onAction="#handleReturnToDashboard"/>
+        <Button text="Review Answers"
+                onAction="#handleReviewAnswers"/>
+
+
+    </VBox>
+
+</StackPane>

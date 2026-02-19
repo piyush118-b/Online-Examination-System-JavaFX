@@ -28,14 +28,18 @@ public class StudentController {
                 getClass().getResource("/fxml/exam_screen.fxml")
         );
 
-        Scene scene = new Scene(loader.load(), 600, 500);
+        Scene scene = new Scene(loader.load(), 1000, 600);
+        scene.getStylesheets().add(
+                getClass().getResource("/css/exam.css").toExternalForm()
+        );
 
         ExamController controller = loader.getController();
-        controller.setStudentId(currentUser.getUserId());  // ✅ Pass student ID
+        controller.setStudentId(currentUser.getUserId());
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
     }
+
 
     @FXML
     private void handleLogout(ActionEvent event) throws Exception {

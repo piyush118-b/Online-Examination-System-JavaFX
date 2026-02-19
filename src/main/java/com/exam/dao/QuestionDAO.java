@@ -8,13 +8,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionDAO {
+    private List<String> getImagesForQuestion(int questionId) {
+
+        List<String> images = new ArrayList<>();
+        String query = "SELECT image_path FROM question_images WHERE question_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, questionId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                images.add(rs.getString("image_path"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return images;
+    }
 
     // Add Question
-    public boolean addQuestion(Question question) {
+    public int addQuestion(Question question) {
 
         String query = "INSERT INTO questions " +
-                "(question_text, option_a, option_b, option_c, option_d, correct_option, marks) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "(question_text, option_a, option_b, option_c, option_d, correct_option, marks, section) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING question_id";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -26,14 +47,36 @@ public class QuestionDAO {
             stmt.setString(5, question.getOptionD());
             stmt.setString(6, question.getCorrectOption());
             stmt.setInt(7, question.getMarks());
+            stmt.setString(8, question.getSection());   // 👈 ADD THIS
 
-            return stmt.executeUpdate() > 0;
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("question_id");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return false;
+        return -1;
+    }
+
+
+    public void addImageForQuestion(int questionId, String imagePath) {
+
+        String query = "INSERT INTO question_images (question_id, image_path) VALUES (?, ?)";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, questionId);
+            stmt.setString(2, imagePath);
+            stmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Fetch All Questions
@@ -55,9 +98,10 @@ public class QuestionDAO {
                         rs.getString("option_c"),
                         rs.getString("option_d"),
                         rs.getString("correct_option"),
-                        rs.getInt("marks")
+                        rs.getInt("marks"),
+                        rs.getString("section")
                 );
-
+                q.setImagePaths(getImagesForQuestion(q.getQuestionId()));
                 questions.add(q);
             }
 

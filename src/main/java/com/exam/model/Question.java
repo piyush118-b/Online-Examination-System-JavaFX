@@ -1,6 +1,9 @@
 package com.exam.model;
 
+import java.util.List;
+
 public class Question {
+    private List<String> imagePaths;
 
     private int questionId;
     private String questionText;
@@ -10,15 +13,17 @@ public class Question {
     private String optionD;
     private String correctOption;
     private int marks;
+    private String section;
 
     public Question() {}
 
-    public Question(int questionId, String questionText,
+    public Question(int id, String questionText,
                     String optionA, String optionB,
                     String optionC, String optionD,
-                    String correctOption, int marks) {
+                    String correctOption, int marks,
+                    String section) {
 
-        this.questionId = questionId;
+        this.questionId = id;
         this.questionText = questionText;
         this.optionA = optionA;
         this.optionB = optionB;
@@ -26,9 +31,21 @@ public class Question {
         this.optionD = optionD;
         this.correctOption = correctOption;
         this.marks = marks;
+        this.section = section;
     }
 
+
+    public String getSection() { return section; }
+    public void setSection(String section) { this.section = section; }
+
     // Getters and Setters
+    public List<String> getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(List<String> imagePaths) {
+        this.imagePaths = imagePaths;
+    }
 
     public int getQuestionId() { return questionId; }
     public void setQuestionId(int questionId) { this.questionId = questionId; }
