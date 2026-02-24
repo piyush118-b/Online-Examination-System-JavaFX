@@ -1,4 +1,5 @@
 package com.exam.controller;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,19 +9,15 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import com.exam.model.User;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.event.ActionEvent;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdminController {
-    @FXML private VBox selectedImagesBox;
+    @FXML
+    private VBox selectedImagesBox;
 
     private List<File> selectedImageFiles = new ArrayList<>();
 
@@ -35,19 +32,18 @@ public class AdminController {
     private void handleLogout(ActionEvent event) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/fxml/login.fxml")
-        );
+                getClass().getResource("/fxml/login.fxml"));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader.load(), 400, 300));
     }
+
     @FXML
     private void handleAddImage() {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg")
-        );
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
 
         List<File> files = fileChooser.showOpenMultipleDialog(null);
 
@@ -65,8 +61,7 @@ public class AdminController {
     private void handleManageQuestions(ActionEvent event) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/fxml/manage_questions.fxml")
-        );
+                getClass().getResource("/fxml/manage_papers.fxml"));
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(loader.load(), 500, 500));

@@ -14,14 +14,16 @@ public class Question {
     private String correctOption;
     private int marks;
     private String section;
+    private int paperId;
 
-    public Question() {}
+    public Question() {
+    }
 
     public Question(int id, String questionText,
-                    String optionA, String optionB,
-                    String optionC, String optionD,
-                    String correctOption, int marks,
-                    String section) {
+            String optionA, String optionB,
+            String optionC, String optionD,
+            String correctOption, int marks,
+            String section) {
 
         this.questionId = id;
         this.questionText = questionText;
@@ -34,9 +36,13 @@ public class Question {
         this.section = section;
     }
 
+    public String getSection() {
+        return section;
+    }
 
-    public String getSection() { return section; }
-    public void setSection(String section) { this.section = section; }
+    public void setSection(String section) {
+        this.section = section;
+    }
 
     // Getters and Setters
     public List<String> getImagePaths() {
@@ -47,27 +53,80 @@ public class Question {
         this.imagePaths = imagePaths;
     }
 
-    public int getQuestionId() { return questionId; }
-    public void setQuestionId(int questionId) { this.questionId = questionId; }
+    public int getQuestionId() {
+        return questionId;
+    }
 
-    public String getQuestionText() { return questionText; }
-    public void setQuestionText(String questionText) { this.questionText = questionText; }
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
 
-    public String getOptionA() { return optionA; }
-    public void setOptionA(String optionA) { this.optionA = optionA; }
+    public String getQuestionText() {
+        return questionText;
+    }
 
-    public String getOptionB() { return optionB; }
-    public void setOptionB(String optionB) { this.optionB = optionB; }
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
+    }
 
-    public String getOptionC() { return optionC; }
-    public void setOptionC(String optionC) { this.optionC = optionC; }
+    public String getOptionA() {
+        return optionA;
+    }
 
-    public String getOptionD() { return optionD; }
-    public void setOptionD(String optionD) { this.optionD = optionD; }
+    public void setOptionA(String optionA) {
+        this.optionA = optionA;
+    }
 
-    public String getCorrectOption() { return correctOption; }
-    public void setCorrectOption(String correctOption) { this.correctOption = correctOption; }
+    public String getOptionB() {
+        return optionB;
+    }
 
-    public int getMarks() { return marks; }
-    public void setMarks(int marks) { this.marks = marks; }
+    public void setOptionB(String optionB) {
+        this.optionB = optionB;
+    }
+
+    public String getOptionC() {
+        return optionC;
+    }
+
+    public void setOptionC(String optionC) {
+        this.optionC = optionC;
+    }
+
+    public String getOptionD() {
+        return optionD;
+    }
+
+    public void setOptionD(String optionD) {
+        this.optionD = optionD;
+    }
+
+    public String getCorrectOption() {
+        return correctOption;
+    }
+
+    public void setCorrectOption(String correctOption) {
+        this.correctOption = correctOption;
+    }
+
+    public int getMarks() {
+        return marks;
+    }
+
+    public void setMarks(int marks) {
+        this.marks = marks;
+    }
+
+    public int getPaperId() {
+        return paperId;
+    }
+
+    public void setPaperId(int paperId) {
+        this.paperId = paperId;
+    }
+
+    @Override
+    public String toString() {
+        return "Q" + questionId + ": " + questionText;
+    }
 }

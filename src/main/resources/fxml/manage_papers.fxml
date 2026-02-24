@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="15"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.exam.controller.ManagePapersController">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Manage Exam Papers" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <VBox spacing="5">
+            <Label text="New Paper Name:"/>
+            <TextField fx:id="paperNameField" promptText="Enter paper name"/>
+            <Label text="Description:"/>
+            <TextField fx:id="paperDescriptionField" promptText="Enter paper description"/>
+            <Button text="Create Paper" onAction="#handleCreatePaper"/>
+            <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+        </VBox>
+        <VBox spacing="5">
+            <Label text="Existing Papers:"/>
+            <ListView fx:id="paperListView" prefHeight="150" prefWidth="200"/>
+        </VBox>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Manage Questions for Selected Paper" onAction="#handleManageQuestions"/>
+        <Button text="Delete Selected Paper" onAction="#handleDeletePaper" style="-fx-text-fill: red;"/>
+    </HBox>
+    
+    <Button text="Back to Dashboard" onAction="#handleBack"/>
+
+</VBox>

@@ -9,7 +9,7 @@
 
     <Label fx:id="welcomeLabel" text="Admin Dashboard"/>
 
-    <Button text="Manage Questions" onAction="#handleManageQuestions"/>
+    <Button text="Manage Question Papers" onAction="#handleManageQuestions"/>
 
     <Button text="Logout" onAction="#handleLogout"/>
 

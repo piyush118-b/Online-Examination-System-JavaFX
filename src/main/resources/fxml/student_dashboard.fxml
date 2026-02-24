@@ -9,7 +9,13 @@
 
     <Label fx:id="welcomeLabel" text="Student Dashboard"/>
 
+    <Label text="Select Exam Paper:"/>
+    <ComboBox fx:id="paperComboBox" prefWidth="200" promptText="Choose a Paper"/>
+    <Label fx:id="messageLabel" style="-fx-text-fill: red;"/>
+
     <Button text="Start Exam" onAction="#handleStartExam"/>
+    
+    <Button text="View Results" onAction="#handleViewResults"/>
 
     <Button text="Logout" onAction="#handleLogout"/>
 
