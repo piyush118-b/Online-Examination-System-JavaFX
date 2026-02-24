@@ -39,10 +39,10 @@ public class ReviewController {
 
             String selectedText = item.getSelectedOption() == null
                     ? "Not Attempted"
-                    : item.getSelectedOption();
+                    : getOptionText(item, item.getSelectedOption());
 
             Label selected = new Label("Your Answer: " + selectedText);
-            Label correct = new Label("Correct Answer: " + item.getCorrectOption());
+            Label correct = new Label("Correct Answer: " + getOptionText(item, item.getCorrectOption()));
 
             if (item.getSelectedOption() == null) {
                 selected.setStyle("-fx-text-fill: #b36e00;"); // dark orange for unattempted
@@ -56,6 +56,24 @@ public class ReviewController {
             reviewContainer.getChildren().add(box);
 
             questionNumber++;
+        }
+    }
+
+    private String getOptionText(ReviewItem item, String optionLetter) {
+        if (optionLetter == null) {
+            return "Not Attempted";
+        }
+        switch (optionLetter.toUpperCase()) {
+            case "A":
+                return "A. " + item.getOptionA();
+            case "B":
+                return "B. " + item.getOptionB();
+            case "C":
+                return "C. " + item.getOptionC();
+            case "D":
+                return "D. " + item.getOptionD();
+            default:
+                return optionLetter;
         }
     }
 }
