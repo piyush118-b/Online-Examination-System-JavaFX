@@ -8,7 +8,7 @@ public class DBConnection {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/online_exam_db";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "180404"; // 🔥 change this
+    private static final String PASSWORD = "postgres"; // 🔥 change this
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
