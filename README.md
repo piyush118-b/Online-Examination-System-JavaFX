@@ -1,5 +1,4 @@
-# 🧠 Online Examination System (JavaFX + PostgreSQL)
-
+# 🧠 Online Examination System 
 A full-featured desktop-based examination system built using:
 
 - Java (Core)
